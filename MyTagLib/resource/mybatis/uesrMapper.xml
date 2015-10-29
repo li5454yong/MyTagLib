@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxg.dao.UserDao">
+	<resultMap type="com.lxg.entity.User" id="userInfo">
+		<result property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="age" column="age"/>
+	</resultMap>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from user where 1=1;
+	</select>
+	
+	<select id="list" resultMap="userInfo">
+		select id,username,password,age from user
+		limit #{start},#{end};
+	</select>
+</mapper>
